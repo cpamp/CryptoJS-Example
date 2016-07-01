@@ -5,11 +5,11 @@
 </head>
 
 <body>
-    <div id='salt'></div>
     <div id='password'></div>
+    <div id='salt'></div>
     <div id='key'></div>
-    <div id='length'></div>
-
+    <div id='saltLength'></div>
+    <div id='keyLength'></div>
 
     <script>
         var salt = CryptoJS.lib.WordArray.random(128/8);
@@ -19,12 +19,14 @@
         var saltElem = document.getElementById('salt');
         var passwordElem = document.getElementById('password');
         var keyElem = document.getElementById('key');
-        var lengthElem = document.getElementById('length');
+        var keyLengthElem = document.getElementById('keyLength');
+        var saltLengthElem = document.getElementById('saltLength');
 
-        saltElem.innerText = salt;
-        passwordElem.innerText = password;
-        key1Elem.innerText = key;
-        lengthElem.innerText = "Length: " + key.toString().length;
+        passwordElem.innerText = "Plain Text: " + password;
+        saltElem.innerText = "Salt: " + salt;
+        keyElem.innerText = "Key: " + key;
+        saltLengthElem.innerText = "Salt Length: " + salt.toString().length;
+        keyLengthElem.innerText = "Key Length: " + key.toString().length;
     </script>
 </body>
 
