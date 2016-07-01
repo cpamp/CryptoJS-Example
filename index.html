@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <script type='text/javascript' src='node_modules/crypto-js/crypto-js.js'></script>
+</head>
+
+<body>
+    <div id='salt'></div>
+    <div id='password'></div>
+    <div id='key1'></div>
+    <div id='length'></div>
+
+
+    <script>
+        var salt = CryptoJS.lib.WordArray.random(128/8);
+        var password = 'Password2';
+        var key = CryptoJS.PBKDF2(password, salt, { keySize: 256/32, iterations: 1000 });
+
+        var saltElem = document.getElementById('salt');
+        var passwordElem = document.getElementById('password');
+        var key1Elem = document.getElementById('key1');
+        var lengthElem = document.getElementById('length');
+
+        saltElem.innerText = salt;
+        passwordElem.innerText = password;
+        key1Elem.innerText = key;
+        lengthElem.innerText = "Length: " + key.length;
+    </script>
+</body>
+
+</html>
